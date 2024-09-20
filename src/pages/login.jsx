@@ -22,14 +22,9 @@ export const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const { token, user } = await authApi.login({ username, password });
-      console.log(token);
-      console.log(user);
-      navigate("/dashboard");
-    } catch (error) {
-      console.log("Credenciales incorrectas" + error);
-    }
+    console.log(username);
+    console.log(password);
+    navigate("/dashboard");
   };
 
   return (
@@ -51,17 +46,23 @@ export const Login = () => {
               value={username}
               onChange={(e) => setUserName(e.target.value)}
             />
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Usuario</label>
+          </FloatLabel>
+          <FloatLabel>
+            <Password
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              feedback={false}
+              tabIndex={1}
+            />
+
+            <label htmlFor="username">Contraseña</label>
           </FloatLabel>
 
-          <Password
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            feedback={false}
-            tabIndex={1}
-          />
-
           <p className="login-form-password">¿Olvidaste tu contraseña?</p>
+          <p className="login-form-password">
+            <a href="">Registrarse</a>
+          </p>
 
           <Button label="Iniciar Sesión" type="submit" />
         </form>

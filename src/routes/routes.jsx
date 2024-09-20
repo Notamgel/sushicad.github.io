@@ -1,5 +1,4 @@
 // Libraries
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Pages
@@ -11,7 +10,7 @@ function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/companies/:companyId/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
