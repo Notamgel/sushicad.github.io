@@ -15,10 +15,11 @@ import { authApi } from "../api/auth";
 //styles
 import "../style/login.css";
 
-export const Login = () => {
+export const Register = () => {
   const navigate = useNavigate();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,7 +38,7 @@ export const Login = () => {
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="login-form-header">
             {/* <img className="login-form-logo" src={muvigLogo} alt="Logo MUVIG" /> */}
-            <h1>Iniciar Sesión</h1>
+            <h1>Registro</h1>
           </div>
 
           <FloatLabel>
@@ -48,6 +49,16 @@ export const Login = () => {
             />
             <label htmlFor="username">Usuario</label>
           </FloatLabel>
+
+          <FloatLabel>
+            <InputText
+              id="username"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label htmlFor="username">Correo</label>
+          </FloatLabel>
+
           <FloatLabel>
             <Password
               value={password}
@@ -63,10 +74,10 @@ export const Login = () => {
             <a href="">¿Olvidaste tu contraseña?</a>
           </p>
           <p className="login-form-password">
-            <a href="/register">Registrarse</a>
+            <a href="/">Login</a>
           </p>
 
-          <Button label="Iniciar Sesión" type="submit" />
+          <Button label="Registro" type="submit" />
         </form>
       </div>
     </div>
