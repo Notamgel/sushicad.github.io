@@ -1,41 +1,32 @@
 // Config
 import { config } from "../config";
 
-export abstract class Base {
-  BASE_URI: string;
-
-  constructor(baseURI: string) {
+class Base {
+  constructor(baseURI) {
+    if (new.target === Base) {
+      throw new Error("Cannot instantiate abstract class Base directly.");
+    }
     this.BASE_URI = baseURI;
   }
 
-  protected async fetchData<T>(
-    uri: string,
-    method: string,
-    data?: T,
-    isFormData: boolean = false
-  ) {
+  async fetchData(uri, method, data = null, isFormData = false) {
     const token = localStorage.getItem("token");
-    const options: RequestInit = {
+    const options = {
       method: method,
       headers: {},
     };
 
     if (data) {
       if (isFormData) {
-        options.body = data as unknown as FormData;
+        options.body = data;
       } else {
         options.body = JSON.stringify(data);
-        options.headers = {
-          "Content-Type": "application/json",
-        };
+        options.headers["Content-Type"] = "application/json";
       }
     }
 
     if (token) {
-      options.headers = {
-        ...options.headers,
-        Authorization: `Bearer ${token}`,
-      };
+      options.headers["Authorization"] = `Bearer ${token}`;
     }
 
     const response = await fetch(`${config.API_URL}/${uri}`, options);
@@ -49,39 +40,41 @@ export abstract class Base {
     return response.json();
   }
 
-  protected async post<T>(uri: string, data: T, isFormData: boolean = false) {
+  async post(uri, data, isFormData = false) {
     return this.fetchData(uri, "POST", data, isFormData);
   }
 
-  protected async put<T>(uri: string, data: T, isFormData: boolean = false) {
+  async put(uri, data, isFormData = false) {
     return this.fetchData(uri, "PUT", data, isFormData);
   }
 
-  protected async get(uri: string) {
+  async get(uri) {
     return this.fetchData(uri, "GET");
   }
 
-  protected async delete(uri: string) {
+  async delete(uri) {
     return this.fetchData(uri, "DELETE");
   }
 
-  async create<T>(data: T, isFormData: boolean = false) {
+  async create(data, isFormData = false) {
     return this.post(this.BASE_URI, data, isFormData);
   }
 
-  async detail(id: string) {
+  async detail(id) {
     return this.get(`${this.BASE_URI}/${id}`);
   }
 
-  async destroy(id: string) {
+  async destroy(id) {
     return this.delete(`${this.BASE_URI}/${id}`);
   }
 
-  async update<T>(id: string, data: T, isFormData: boolean = false) {
+  async update(id, data, isFormData = false) {
     return this.put(`${this.BASE_URI}/${id}`, data, isFormData);
   }
 
-  async list(currentPage: number, count: number) {
+  async list(currentPage, count) {
     return this.get(`${this.BASE_URI}?page=${currentPage}&count=${count}`);
   }
 }
+
+export default Base;

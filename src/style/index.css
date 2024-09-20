@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+/* page without register */
+.createItemNew {
+  display: grid;
+  justify-content: center;
+  /* align-items: center; */
+  height: 60vh;
+}
+
+.createItemNew img {
+  width: 50%;
+  justify-self: center;
+  align-self: flex-end;
+}
+
+.createItemNew p {
+  width: 70%;
+  font-size: 0.8rem;
+  justify-self: center;
+  text-align: center;
+}
+
+.vertical-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+}

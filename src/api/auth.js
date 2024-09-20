@@ -1,8 +1,5 @@
-// Interfaces
-import type { IAuthLogin } from "../interfaces/auth";
-
 // API
-import { Base } from "./base";
+import Base from "./base";
 
 class Auth extends Base {
   constructor() {
@@ -13,7 +10,7 @@ class Auth extends Base {
     return this.get(`${this.BASE_URI}/me`);
   }
 
-  async login(data: IAuthLogin) {
+  async login(data) {
     return this.post(`${this.BASE_URI}/login`, data);
   }
 }

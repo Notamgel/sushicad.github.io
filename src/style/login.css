@@ -1,0 +1,86 @@
+@import url(./index.css);
+
+.container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+
+.container-login-img {
+    width: 60%;
+    height: 100vh;
+    padding: 10px;
+}
+
+.container-login-img p {
+    font-size: 30px;
+    font-weight: 800;
+    color: #fff;
+    margin-top: -500px;
+    right: auto;
+    text-align: center;
+    padding: 30px;
+}
+
+
+.container-login-img video {
+    width: 100%;
+    height: 100%; /* Cubre el 100% del alto */
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsionarla */
+    border-radius: 0px 50px 0px 50px;
+}
+
+.container-login-form {
+    width: 40%;
+    padding: 50px;
+    margin: 50px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.login-form-logo {
+    width: 25%;
+    margin: 20px 0;
+}
+
+.login-form h1  {
+    margin-bottom: 20px;
+    color: var(--color-primary);
+}
+
+.login-form-password {
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+
+/* Media queries para hacer los estilos responsivos */
+@media screen and (max-width: 768px) {
+    .container-login {
+        display: flex;
+    }
+
+    .container-login-img {
+        display: none;
+    }
+
+    .container-login-form {
+        width: 100%;
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .login-form-logo {
+        width: 50%;
+        justify-self: center;
+    }
+}
