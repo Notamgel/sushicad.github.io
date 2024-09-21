@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import loginPicture from "../assets/login-picture.png";
 
 // API
-import { authApi } from "../api/auth";
+// import { authApi } from "../api/auth";
 
 //styles
 import "../style/login.css";
@@ -31,7 +31,7 @@ export const Register = () => {
   return (
     <div className="container-login">
       <div className="container-login-img">
-        <img className="login-img" autoPlay muted loop src={loginPicture}></img>
+        <img className="login-img" src={loginPicture}></img>
       </div>
 
       <div className="container-login-form">
